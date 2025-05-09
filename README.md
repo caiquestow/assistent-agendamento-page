@@ -8,8 +8,7 @@
 5. [Desafios Enfrentados e Soluções](#desafios-enfrentados-e-soluções)
 6. [Tecnologias Utilizadas](#tecnologias-utilizadas)
 7. [Requisitos e Configuração](#requisitos-e-configuração)
-8. [Demonstração](#demonstração)
-9. [Melhorias Futuras](#melhorias-futuras)
+8. [Melhorias Futuras](#melhorias-futuras)
 
 ## 📝 Visão Geral
 
