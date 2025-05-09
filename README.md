@@ -314,15 +314,13 @@ Implementa processamento de comandos por voz:
 **Desafio:** Obter uma transcrição precisa de comandos de voz e gerar respostas em áudio natural.
 
 **Solução:**
-- Processamento do áudio no frontend para melhorar a qualidade
 - Uso da API Whisper da OpenAI para transcrição de alta precisão
 - Implementação de Text-to-Speech com vozes naturais
-- Sistema de cache para respostas de áudio frequentes
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **Backend:** FastAPI (Python 3.9+)
-- **Frontend:** HTML5, CSS3, JavaScript nativo
+- **Frontend:** HTML5, CSS3, JavaScript
 - **APIs e Integrações:**
   - OpenAI API (GPT 4o Mini [default] para interpretação, Whisper para STT, TTS para resposta de voz)
   - Google API (Calendar, Sheets)
@@ -347,6 +345,7 @@ GOOGLE_CLIENT_SECRET=seu_client_secret
 GOOGLE_REDIRECT_URI=http://localhost:8000/api/auth/callback
 EMAIL_USER=seu_email@gmail.com
 EMAIL_PASS=sua_senha_de_app
+OPENAI_MODEL=modelo_gpt
 ```
 
 ### Configuração do Projeto Google Cloud
@@ -358,74 +357,16 @@ Para o funcionamento correto das integrações Google, é necessário:
    - Google Calendar API
    - Google Sheets API
    - Google Drive API
-3. Configurar tela de consentimento OAuth
-4. Criar credenciais OAuth com as URIs de redirecionamento corretas
-
-### Dependências Python
-
-Todas as dependências necessárias estão listadas no arquivo `requirements.txt` e podem ser instaladas com:
-
-```bash
-pip install -r requirements.txt
-```
-
-## 🎬 Demonstração
-
-O sistema foi desenvolvido para ser intuitivo e de fácil uso. Um fluxo típico de demonstração inclui:
-
-1. **Autorização inicial**
-   - Clicar no botão "Autorizar Google Calendar"
-   - Conceder as permissões solicitadas
-   - Confirmar o retorno à aplicação com status "Autenticado"
-
-2. **Comando de texto**
-   - Inserir um comando como "Agendar reunião com Maria amanhã às 15h"
-   - Enviar e observar o processamento
-   - Verificar a resposta com detalhes do evento criado
-   - Confirmar a criação no Google Calendar
-
-3. **Comando de voz (feature bônus)**
-   - Clicar no botão "Gravar"
-   - Falar o comando desejado
-   - Parar a gravação
-   - Observar o processo de transcrição e processamento
-   - Ouvir a resposta de áudio e verificar os detalhes do evento
+3. Configurar auth
 
 ## 🚀 Melhorias Futuras
 
-Com base na arquitetura atual, identifiquei possíveis melhorias para versões futuras:
+   - Implementação de refresh tokens mais seguros em um DB.
+   - Utilização da meta pra msgs via whatsapp.
+   - Migração para uso com LangChain para fluxos mais complexos e outras LLMs com mais agilidade.
+   - Utilização de contextos com base em configurações prévias, como emails de equipes/usuarios ou preferências, e criação de mecanismo conversacional.
+   - Histórico de Comandos: Implementar um registro histórico dos comandos processados.
+   - Utilizaçao de docker para continuar o desenvolvimento em ambientes cloud e produtivos.
+   - Criação de testes e monitoramento.
 
-1. **Funcionalidades de Agendamento Avançadas**
-   - Suporte a eventos recorrentes
-   - Detecção automática de conflitos de agenda
-   - Sugestão de horários alternativos
-
-2. **Personalização de Usuário**
-   - Preferências de horários para reuniões
-   - Templates personalizados de emails de confirmação
-   - Integração com múltiplas contas Google
-
-3. **Melhorias na Interface**
-   - Aplicativo móvel nativo
-   - Integração com assistentes de voz (Alexa, Google Assistant)
-   - Dashboard com análise de eventos e produtividade
-
-4. **Segurança Avançada**
-   - Implementação de refresh tokens mais seguros
-   - Criptografia de dados em repouso
-   - Opções de autenticação em 2 fatores
-
-5. **Expansão de Integrações**
-   - Suporte a outros serviços de calendário (Microsoft Outlook, Apple Calendar)
-   - Integração com serviços de videoconferência (Zoom, Meet, Teams)
-   - Conexão com CRMs e ferramentas de produtividade
-
-## 📊 Conclusão
-
-O Assistente de Agendamento demonstra como a integração de processamento de linguagem natural com APIs de produtividade pode transformar tarefas cotidianas que consomem tempo. Ao automatizar o processo completo de agendamento, desde a interpretação do comando até o registro e notificação, o sistema oferece um vislumbre do futuro das interfaces conversacionais e assistentes virtuais.
-
-A arquitetura modular permite fácil manutenção e extensão, possibilitando adicionar novas funcionalidades sem grandes refatorações. A implementação de fallbacks em componentes críticos garante a robustez do sistema mesmo em cenários de falha parcial.
-
----
-
-*Esta documentação abrange os principais aspectos técnicos e funcionais do Assistente de Agendamento, fornecendo uma visão detalhada da solução implementada para o desafio proposto.*
+   - Suporte a Cancelamento/Edição: Adicionar suporte para cancelar ou editar eventos já criados.
