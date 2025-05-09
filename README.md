@@ -142,7 +142,7 @@ async def parse_command(self, command: str) -> Dict[str, Any]:
         client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
         
         response = await client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": command}
@@ -324,7 +324,7 @@ Implementa processamento de comandos por voz:
 - **Backend:** FastAPI (Python 3.9+)
 - **Frontend:** HTML5, CSS3, JavaScript nativo
 - **APIs e Integrações:**
-  - OpenAI API (GPT-3.5-turbo para interpretação, Whisper para STT, TTS para resposta de voz)
+  - OpenAI API (GPT 4o Mini [default] para interpretação, Whisper para STT, TTS para resposta de voz)
   - Google API (Calendar, Sheets)
   - SMTP para envio de emails
 - **Bibliotecas Python Principais:**
